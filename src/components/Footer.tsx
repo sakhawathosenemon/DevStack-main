@@ -102,7 +102,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Dev Stack. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-sm text-gray-500 hover:text-gray-800">
+            <a href="#b" className="text-sm text-gray-500 hover:text-gray-800">
               Privacy
             </a>
             <a href="#" className="text-sm text-gray-500 hover:text-gray-800">

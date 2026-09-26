@@ -49,6 +49,7 @@ function App() {
           />
         </div>
       </section>
+
       <ToastContainer position="bottom-right" autoClose={2500} />
       <Footer />
     </div>
