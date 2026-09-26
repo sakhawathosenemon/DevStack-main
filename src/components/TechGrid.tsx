@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import type { Technology } from "../types";
 import TechCard from "./TechCard";
 
-export default function TechGrid() {
+interface TechGridProps {
+  stack: Technology[];
+  onAdd: (tech: Technology) => void;
+}
+
+export default function TechGrid({ stack, onAdd }: TechGridProps) {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -29,13 +34,15 @@ export default function TechGrid() {
   }
 
   return (
-    <section className="max-w-7xl mx-auto px-4 md:px-8 py-12">
-      <h2 className="text-2xl font-bold mb-8">Technologies</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {technologies.map((tech) => (
-          <TechCard key={tech.id} technology={tech} />
-        ))}
-      </div>
-    </section>
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      {technologies.map((tech) => (
+        <TechCard
+          key={tech.id}
+          technology={tech}
+          isAdded={stack.some((t) => t.id === tech.id)}
+          onAdd={onAdd}
+        />
+      ))}
+    </div>
   );
 }

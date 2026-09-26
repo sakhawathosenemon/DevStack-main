@@ -2,9 +2,15 @@ import type { Technology } from "../types";
 
 interface TechCardProps {
   technology: Technology;
+  isAdded: boolean;
+  onAdd: (tech: Technology) => void;
 }
 
-export default function TechCard({ technology }: TechCardProps) {
+export default function TechCard({
+  technology,
+  isAdded,
+  onAdd,
+}: TechCardProps) {
   const { name, category, description, icon, rating, difficulty, badge } =
     technology;
 
@@ -36,8 +42,16 @@ export default function TechCard({ technology }: TechCardProps) {
         <span>{rating}</span>
       </div>
 
-      <button className="mt-auto w-full py-2 rounded-full font-medium text-white bg-gradient-brand hover:opacity-90 transition-opacity">
-        Add to Stack
+      <button
+        onClick={() => onAdd(technology)}
+        disabled={isAdded}
+        className={`mt-auto w-full py-2 rounded-full font-medium transition-opacity ${
+          isAdded
+            ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+            : "text-white bg-gradient-brand hover:opacity-90"
+        }`}
+      >
+        {isAdded ? "✓ Added to Stack" : "Add to Stack"}
       </button>
     </div>
   );
