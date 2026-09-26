@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import TechGrid from "./components/TechGrid";
 import YourStack from "./components/YourStack";
 import type { Technology } from "./types";
+import Footer from "./components/Footer";
 
 function App() {
   const [stack, setStack] = useState<Technology[]>([]);
@@ -49,6 +50,7 @@ function App() {
         </div>
       </section>
       <ToastContainer position="bottom-right" autoClose={2500} />
+      <Footer />
     </div>
   );
 }
