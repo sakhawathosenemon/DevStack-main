@@ -6,8 +6,8 @@ adding and removing tools from an interactive collection.
 
 ## 🔗 Links
 
-- **Live Site:** _add your deployed link here_
-- **GitHub Repo:** _add your repo link here_
+- **Live Site:**(https://github.com/sakhawathosenemon/DevStack-main)
+- **GitHub Repo:** https://dev-stack-main.vercel.app/
 
 ## 🛠️ Built With
 
