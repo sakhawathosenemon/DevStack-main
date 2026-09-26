@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import TechGrid from "./components/TechGrid";
@@ -11,16 +13,23 @@ function App() {
   const addToStack = (tech: Technology) => {
     const alreadyAdded = stack.some((t) => t.id === tech.id);
     if (alreadyAdded) {
-      return; // duplicate warning toast — next step e add korbo
+      toast.warning(`${tech.name} is already in your stack!`);
+      return;
     }
     setStack((prev) => [...prev, tech]);
+    toast.success(`${tech.name} added to your stack!`);
   };
 
   const removeFromStack = (id: string) => {
+    const tech = stack.find((t) => t.id === id);
     setStack((prev) => prev.filter((t) => t.id !== id));
+    if (tech) toast.info(`${tech.name} removed from your stack.`);
   };
 
-  const removeAll = () => setStack([]);
+  const removeAll = () => {
+    setStack([]);
+    toast.info("Stack cleared.");
+  };
 
   return (
     <div>
@@ -39,6 +48,7 @@ function App() {
           />
         </div>
       </section>
+      <ToastContainer position="bottom-right" autoClose={2500} />
     </div>
   );
 }
